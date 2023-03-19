@@ -1,0 +1,174 @@
+<!-- html 5 basic template -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <title>ISRTaxesOpenAPI</title>
+    <script>
+        function Auth() {
+            var url = document.getElementById("txtUrl").value;
+            var responseType = document.getElementById("txtResType").value;
+            var clientId = document.getElementById("txtCId").value;
+            var scope = document.getElementById("txtScope").value;
+            var urlParams = "?response_type=" + responseType + "&client_id=" + clientId + "&scope=" + scope;
+            window.location.href = url + urlParams;
+        }
+
+
+
+        
+        function callApi() {
+
+
+    const button2 = document.getElementById('callApi');
+    button2.addEventListener('click', function(e) {
+
+        fetch('/createApiRequest')
+            .then(function(response) {
+              if(response.ok) {
+                  console.log("S")
+                  alert("ee")
+               return;
+                }
+               throw new Error('Request failed.');
+              })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+}
+
+
+ function refresh() {
+    const button = document.getElementById('refresh');
+    button.addEventListener('click', function(e) {
+
+        fetch('/refreshToken')
+            .then(function(response) {
+              if(response.ok) {
+               return;
+                }
+               throw new Error('Request failed.');
+              })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+}
+///////////
+    </script>
+
+</head>
+
+<body>
+    <style>
+        .text-bg-primary{
+            background-color: #00255a !important;
+        }
+        .text-bg-light{
+            color: #0C3058 !important;
+        }
+.logoimg{
+    max-height: 55px;
+    width: 318px;
+}
+        
+        
+    </style>
+    <div >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <div class="row text-bg-primary p-3" >
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-7">
+    <h1>ISR TaxesOpenAPI Oauth2 flow example</h1>
+</div>
+<div class="col-sm-2">
+    <img src="./logo.png" class="logoimg">
+</div>
+</div>
+</div>
+<div class="text-bg-light p-3">
+<br><br>
+<div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2">
+    <h4>auth url:</h4>
+</div>   
+<div class="col-sm-2">
+    <input type="text" style="width:550px" id="txtUrl" value="https://openapi.taxes.gov.il/shaam/sandbox/longtimetoken/oauth2/authorize">
+</div>   
+</div> 
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+
+    <h3>response_type</h3>
+</div>   
+    <div class="col-sm-2">
+    <input type="text" id="txtResType" value="code">
+</div>   
+</div>   
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2">
+    <h3>client_id</h3>
+</div>   
+
+<div class="col-sm-2">
+    <input type="text" style="width:300px"  id="txtCId" value="">
+
+</div>   
+</div>   
+
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2">
+    <h3>scope</h3>
+</div>   
+
+    <div class="col-sm-2">
+    <input type="text" id="txtScope" value="scope">
+</div>   
+</div>   
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+<h3>api url</h3>
+</div>   
+
+<div class="col-sm-2">
+<span>https://openapi.taxes.gov.il/shaam/sandbox/openaccess/</span>
+</div>   
+</div>
+
+
+<br>
+    <br>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+        <button  class="btn btn-primary" onclick="Auth()">Authenticate</button>
+    </div>        <div class="col-sm-2">
+        <button  class="btn btn-primary" id="refresh" onclick="refresh()">refresh token</button>
+    </div>
+        <div class="col-sm-2">
+        <button  class="btn btn-primary" id="callApi" onclick="callApi()">api call</button>
+    </div>
+    </div>
+</div>
+</body>
+
+</html>
