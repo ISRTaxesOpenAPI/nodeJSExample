@@ -82,9 +82,9 @@ app.get('/refreshToken', (req, res) => {
   //grantType
   const grantType = 'refresh_token';
 
-  const clientID = 'a862b70b12346c66a1646e929e6ab7b0';
+  const clientID = '';
   //clientSecret
-  const clientSecret = '12b139f2af5e16dfb76d86c463459ae5';
+  const clientSecret = '';
   
   createRequestForRefreshToken(url,grantType,refreshToken,scope,clientID,clientSecret,function (newRefresh) {
     console.log("new refresh token = " + newRefresh)
